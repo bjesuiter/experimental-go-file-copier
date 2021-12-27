@@ -60,3 +60,7 @@ func Formatf(template string, byteCount int64, format ByteCountFormat) string {
 
 	return "unknown ByteCountFormat"
 }
+
+func Printf(template string, byteCount int64, format ByteCountFormat) {
+	fmt.Print(Formatf(template, byteCount, format))
+}
