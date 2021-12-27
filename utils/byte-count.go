@@ -37,3 +37,11 @@ func ByteCountBase2(byteCount int64) string {
 	return fmt.Sprintf("%.2f %ciB",
 		float64(byteCount)/float64(div), "KMGTPE"[exp])
 }
+
+func ReadableByteCount(byteCount int64) string {
+	sizeBase2 := ByteCountBase2(byteCount)
+	sizeBase10 := ByteCountBase10(byteCount)
+
+	return fmt.Sprintf("Size: %s / %s\n", sizeBase2, sizeBase10)
+
+}
