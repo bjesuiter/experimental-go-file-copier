@@ -42,6 +42,6 @@ func ReadableByteCount(byteCount int64) string {
 	sizeBase2 := ByteCountBase2(byteCount)
 	sizeBase10 := ByteCountBase10(byteCount)
 
-	return fmt.Sprintf("Size: %s / %s\n", sizeBase2, sizeBase10)
+	return fmt.Sprintf("%s / %s\n", sizeBase2, sizeBase10)
 
 }
