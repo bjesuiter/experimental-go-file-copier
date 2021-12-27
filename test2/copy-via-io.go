@@ -9,6 +9,10 @@ import (
 	"codemonument.com/overnight-copier/utils"
 )
 
+/**
+ * WARNING: This reads the file to memory completely!!! Do only use for small files! (e.g <=100MiB)
+ */
+
 func main() {
 	bytesCopied, err := copy("example/source/image.jpg", "example/target/image.jpg")
 
