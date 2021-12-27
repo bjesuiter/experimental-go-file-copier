@@ -19,6 +19,7 @@ func main() {
 	sizeBase10 := utils.ByteCountBase10(stats.Size())
 
 	//Prints stats of the file
+	fmt.Printf("isDir: %t\n", stats.IsDir())
 	fmt.Printf("Permission: %s\n", stats.Mode())
 	fmt.Printf("Name: %s\n", stats.Name())
 	fmt.Printf("Size: %s / %s\n", sizeBase2, sizeBase10)
