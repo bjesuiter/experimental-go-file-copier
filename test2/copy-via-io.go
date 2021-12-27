@@ -10,7 +10,7 @@ import (
 )
 
 /**
- * WARNING: This reads the file to memory completely!!! Do only use for small files! (e.g <=100MiB)
+ * Note: This method reads the file in 32 KiB Blocks, since it uses io.CopyBuffer under the hood
  */
 
 func main() {
