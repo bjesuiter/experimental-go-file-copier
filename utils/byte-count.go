@@ -38,10 +38,25 @@ func ByteCountBase2(byteCount int64) string {
 		float64(byteCount)/float64(div), "KMGTPE"[exp])
 }
 
-func ReadableByteCount(byteCount int64) string {
+func ByteCountBase2And10(byteCount int64) string {
 	sizeBase2 := ByteCountBase2(byteCount)
 	sizeBase10 := ByteCountBase10(byteCount)
 
 	return fmt.Sprintf("%s / %s\n", sizeBase2, sizeBase10)
+}
 
+/**
+ * @param template a Sprintf style string which must have exactly one %s placeholder
+ */
+func FormatByteCount(template string, byteCount int64, format ByteCountFormat) string {
+	switch format {
+	case Binary:
+		return fmt.Sprintf(template, ByteCountBase2(byteCount))
+	case Decimal:
+		return fmt.Sprintf(template, ByteCountBase10(byteCount))
+	case Both:
+		return fmt.Sprintf(template, ByteCountBase2And10(byteCount))
+	}
+
+	return "unknown ByteCountFormat"
 }
