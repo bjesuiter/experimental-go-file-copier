@@ -22,6 +22,6 @@ func (f ByteCountFormat) String() string {
 		return "Binary Size / Decimal Size"
 	}
 
-	log.Fatalf("Illegal ByteCountFormat! %s", f)
+	log.Fatalf("Illegal ByteCountFormat!")
 	return "unknown"
 }
