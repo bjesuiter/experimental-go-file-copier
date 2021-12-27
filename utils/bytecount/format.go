@@ -1,4 +1,4 @@
-package utils
+package bytecount
 
 import "fmt"
 
@@ -9,7 +9,7 @@ import "fmt"
  * Source: https://yourbasic.org/golang/formatting-byte-size-to-human-readable-format/
  */
 
-func ByteCountBase10(b int64) string {
+func FormatBase10(b int64) string {
 	const unit = 1000
 	if b < unit {
 		return fmt.Sprintf("%d B", b)
@@ -23,7 +23,7 @@ func ByteCountBase10(b int64) string {
 		float64(b)/float64(div), "kMGTPE"[exp])
 }
 
-func ByteCountBase2(byteCount int64) string {
+func FormatBase2(byteCount int64) string {
 	const unit = 1024
 
 	if byteCount < unit {
@@ -38,9 +38,9 @@ func ByteCountBase2(byteCount int64) string {
 		float64(byteCount)/float64(div), "KMGTPE"[exp])
 }
 
-func ByteCountBase2And10(byteCount int64) string {
-	sizeBase2 := ByteCountBase2(byteCount)
-	sizeBase10 := ByteCountBase10(byteCount)
+func FormatBase2And10(byteCount int64) string {
+	sizeBase2 := FormatBase2(byteCount)
+	sizeBase10 := FormatBase10(byteCount)
 
 	return fmt.Sprintf("%s / %s\n", sizeBase2, sizeBase10)
 }
@@ -48,14 +48,14 @@ func ByteCountBase2And10(byteCount int64) string {
 /**
  * @param template a Sprintf style string which must have exactly one %s placeholder
  */
-func FormatByteCount(template string, byteCount int64, format ByteCountFormat) string {
+func Formatf(template string, byteCount int64, format ByteCountFormat) string {
 	switch format {
 	case Binary:
-		return fmt.Sprintf(template, ByteCountBase2(byteCount))
+		return fmt.Sprintf(template, FormatBase2(byteCount))
 	case Decimal:
-		return fmt.Sprintf(template, ByteCountBase10(byteCount))
+		return fmt.Sprintf(template, FormatBase10(byteCount))
 	case Both:
-		return fmt.Sprintf(template, ByteCountBase2And10(byteCount))
+		return fmt.Sprintf(template, FormatBase2And10(byteCount))
 	}
 
 	return "unknown ByteCountFormat"
