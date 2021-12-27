@@ -2,11 +2,10 @@ package utils
 
 import (
 	"fmt"
-	"io"
 	"os"
 )
 
-func OpenFileSafely(src string) (io.Reader, error) {
+func OpenFileSafely(src string) (*os.File, error) {
 	sourceFileStat, err := os.Stat(src)
 	if err != nil {
 		return nil, err
@@ -20,7 +19,5 @@ func OpenFileSafely(src string) (io.Reader, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer source.Close()
-
 	return source, nil
 }
